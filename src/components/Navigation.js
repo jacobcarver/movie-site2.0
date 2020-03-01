@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Navigation extends Component {
     constructor() {
@@ -15,7 +16,8 @@ class Navigation extends Component {
     handleSearch(e) {
         e.preventDefault();
         if (this.state.searchInputValue.length > 0) {
-            this.props.searchMovies(this.state.searchInputValue);
+			this.props.searchMovies(this.state.searchInputValue);
+			this.props.history.push('/search');
         }
     }
     render() {
@@ -35,4 +37,4 @@ class Navigation extends Component {
     }
 }
 
-export default Navigation;
+export default withRouter(Navigation);

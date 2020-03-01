@@ -1,1 +1,5 @@
 export const SEARCH_MOVIES = 'SEARCH_MOVIES';
+export const UPCOMING_MOVIES = 'UPCOMING_MOVIES';
+export const POPULAR_MOVIES = 'POPULAR_MOVIES';
+export const R_MOVIES = 'R_MOVIES';
+export const KIDS_MOVIES = 'KIDS_MOVIES';
