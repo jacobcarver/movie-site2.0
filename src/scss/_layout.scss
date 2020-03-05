@@ -1,0 +1,68 @@
+.container {
+	max-width: calc(40vw * 2.25);
+	margin: 0 auto;
+}
+
+body.disable {
+	overflow: hidden;
+	max-height: 100vh;
+}
+
+#navigation {
+	padding: 1.5rem;
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.brand {
+		display: flex;
+		a {
+			text-decoration: none;
+			color: #222222;
+		}
+	}
+	.links {
+		display: flex;
+		a {
+			margin: 0 0.5rem;
+			padding: 0 0.5rem;
+			text-decoration: none;
+			color: #222222;
+			position: relative;
+			span {
+				position: absolute;
+				height: 4px;
+				width: 4px;
+				background: rgb(141, 141, 255);
+				left: 50%;
+				bottom: -14px;
+				border-radius: 4px;
+				opacity: 0;
+				transition: all 0.4s ease-in-out;
+			}
+			&.active {
+				span {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	form {
+		display: flex;
+		input {
+			font-size: 1rem;
+			color: #222222;
+			border: none;
+			padding: 0.5rem 0;
+			outline: none;
+			border-bottom: 1px solid #222222;
+			width: 90%;
+		}
+		img {
+			max-width: 30px;
+			width: 10%;
+			cursor: pointer;
+		}
+	}
+}
