@@ -3,7 +3,11 @@ import {
 	UPCOMING_MOVIES,
 	POPULAR_MOVIES,
 	R_MOVIES,
-	KIDS_MOVIES
+	KIDS_MOVIES,
+	TV_SHOWS,
+	CHOOSE_MOVIE,
+	GET_TRAILERS,
+	CHOOSE_SHOW
 } from '../actions/types';
 
 const initialState = {
@@ -11,7 +15,11 @@ const initialState = {
 	upcomingMovies: [],
 	popularMovies: [],
 	rMovies: [],
-	kidsMovies: []
+	kidsMovies: [],
+	tvShows: [],
+	chosenMovie: {},
+	trailers: [],
+	chosenShow: {}
 };
 
 export default (state = initialState, action) => {
@@ -40,6 +48,26 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				kidsMovies: action.payload
+			}
+		case TV_SHOWS:
+			return {
+				...state,
+				tvShows: action.payload
+			}
+		case CHOOSE_MOVIE:
+			return {
+				...state,
+				chosenMovie: action.payload
+			}
+		case GET_TRAILERS:
+			return {
+				...state,
+				trailers: action.payload
+			}
+		case CHOOSE_SHOW:
+			return {
+				...state,
+				chosenShow: action.payload
 			}
 		default:
 			return state;

@@ -5,10 +5,14 @@ import {
 	UPCOMING_MOVIES,
 	POPULAR_MOVIES,
 	R_MOVIES,
-	KIDS_MOVIES
+	KIDS_MOVIES,
+	TV_SHOWS,
+	CHOOSE_MOVIE,
+	GET_TRAILERS,
+	CHOOSE_SHOW
 } from './types';
 
-// API info
+// API Info
 const API_KEY = `api_key=${'b74e9e633dbb1ff6742cdbedaa08687d'}`;
 const API_URL = 'https://api.themoviedb.org/3';
 
@@ -21,7 +25,7 @@ export const searchMovies = (query) => dispatch => {
 			dispatch({
 				type: SEARCH_MOVIES,
 				payload: response.data.results
-			})
+			});
 		});
 }
 
@@ -32,7 +36,7 @@ export const getUpcomingMovies = () => dispatch => {
 			dispatch({
 				type: UPCOMING_MOVIES,
 				payload: response.data.results
-			})
+			});
 		});
 }
 
@@ -42,7 +46,7 @@ export const getPopularMovies = () => dispatch => {
 			dispatch({
 				type: POPULAR_MOVIES,
 				payload: response.data.results
-			})
+			});
 		});
 }
 
@@ -52,7 +56,7 @@ export const getRMovies = () => dispatch => {
 			dispatch({
 				type: R_MOVIES,
 				payload: response.data.results
-			})
+			});
 		});
 }
 
@@ -62,7 +66,51 @@ export const getKidsMovies = () => dispatch => {
 			dispatch({
 				type: KIDS_MOVIES,
 				payload: response.data.results
-			})
+			});
 		});
 }
 // *** Get movies in different categories - end
+
+// *** Get TV Shows
+export const getTvShows = () => dispatch => {
+	axios.get(`${API_URL}/discover/tv?${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&with_original_language=en`)
+		.then((response) => {
+			dispatch({
+				type: TV_SHOWS,
+				payload: response.data.results
+			});
+		});
+}
+
+// Choose Movie
+export const chooseMovie = id => dispatch => {
+	axios.get(`${API_URL}/movie/${id}?${API_KEY}&language=en-US&page=1`)
+		.then((response) => {
+			dispatch({
+				type: CHOOSE_MOVIE,
+				payload: response.data
+			});
+		});
+}
+
+// Get Chosen Movie Trailers
+export const getTrailers = id => dispatch => {
+	axios.get(`${API_URL}/movie/${id}/videos?${API_KEY}&language=en-US`)
+		.then((response) => {
+			dispatch({
+				type: GET_TRAILERS,
+				payload: response.data.results
+			});
+		});
+}
+
+// Choose Tv Show
+export const chooseShow = id => dispatch => {
+	axios.get(`${API_URL}/tv/${id}?${API_KEY}&language=en-US`)
+		.then((response) => {
+			dispatch({
+				type: CHOOSE_SHOW,
+				payload: response.data
+			});
+		});
+}
