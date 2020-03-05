@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+
+import searchIcon from '../assets/search-icon.svg';
 
 class Navigation extends Component {
     constructor() {
@@ -14,24 +16,33 @@ class Navigation extends Component {
         this.setState({ searchInputValue: e.target.value });
     }
     handleSearch(e) {
+		const { searchMovies, history } = this.props;
         e.preventDefault();
         if (this.state.searchInputValue.length > 0) {
-			this.props.searchMovies(this.state.searchInputValue);
-			this.props.history.push('/search');
+			searchMovies(this.state.searchInputValue);
+			history.push('/search');
+			this.setState({ searchInputValue: '' });
         }
     }
     render() {
+		const { searchInputValue } = this.state;
         return (
             <div id="navigation">
-				<div className="brand">
-					<i></i>
-					<h1>MoviePro</h1>
+				<div className="container">
+					<div className="brand">
+						<Link to="/">MoviePro</Link>
+					</div>
+					<div className="links">
+						<Link to="/" className={`${window.location.pathname === '/' ? 'active' : ''}`}>Home <span></span></Link>
+						<Link to="/discover" className={`${window.location.pathname === '/discover' ? 'active' : ''}`}>Movies <span></span></Link>
+						<Link to="/shows" className={`${window.location.pathname === '/shows' ? 'active' : ''}`}>TV Shows <span></span></Link>
+						<Link to="/search" className={`${window.location.pathname === '/search' ? 'active' : ''}`}>Search <span></span></Link>
+					</div>
+					<form onSubmit={this.handleSearch} className="search">
+						<input onChange={this.handleSearchChange} value={searchInputValue} placeholder="Search Movies" />
+						<img onClick={this.handleSearch} src={searchIcon} alt="Search Movies" />
+					</form>
 				</div>
-				{/* Right Menu Search */}
-				<form onSubmit={this.handleSearch} className="search">
-					<input onChange={this.handleSearchChange} placeholder="Search Movies" required />
-					<i onClick={this.handleSearch}></i>
-				</form>
             </div>
         );
     }
