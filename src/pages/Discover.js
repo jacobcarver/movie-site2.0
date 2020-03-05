@@ -4,22 +4,39 @@ import React, { Component } from 'react';
 import MovieCategories from '../components/MovieCategories';
 
 class Discover extends Component {
-	componentWillMount() {
-		const { getUpcomingMovies, getPopularMovies, getRMovies, getKidsMovies } = this.props
-		getUpcomingMovies();
-		getPopularMovies();
-		getRMovies();
-		getKidsMovies();
-
-		// console.log(Object.keys({...this.props}).filter((prop) => typeof {...this.props}[`${prop}`] !== 'function'));
+	UNSAFE_componentWillMount() {
+		const { getUpcomingMovies, getPopularMovies, getRMovies, getKidsMovies, upcomingMovies, popularMovies, rMovies, kidsMovies } = this.props
+		if (upcomingMovies.length <= 0) {
+			getUpcomingMovies();
+		}
+		if (popularMovies.length <= 0) {
+			getPopularMovies();
+		}
+		if (rMovies.length <= 0) {
+			getRMovies();
+		}
+		if (kidsMovies.length <= 0) {
+			getKidsMovies();
+		}
 	}
 	render() {
-		const { upcomingMovies, popularMovies, rMovies, kidsMovies } = this.props
+		const {
+			upcomingMovies,
+			popularMovies,
+			rMovies,
+			kidsMovies,
+			chosenMovie,
+			chooseMovie,
+			handleMovieModal,
+			movieIsOpen
+		} = this.props
 		return (
 			<div id="discover">
-				<h1>Discover</h1>
-				<div>
-					<MovieCategories upcomingMovies={upcomingMovies} popularMovies={popularMovies} rMovies={rMovies} kidsMovies={kidsMovies} />
+				<div className="container">
+					<h1>Discover</h1>
+					<div>
+						<MovieCategories handleMovieModal={handleMovieModal} movieIsOpen={movieIsOpen} chosenMovie={chosenMovie} chooseMovie={chooseMovie} upcomingMovies={upcomingMovies} popularMovies={popularMovies} rMovies={rMovies} kidsMovies={kidsMovies} />
+					</div>
 				</div>
 			</div>
 		)
