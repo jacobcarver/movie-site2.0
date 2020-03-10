@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-var categories = ['Upcoming Movies', 'Popular Movies', 'R Movies', 'Kids Movies'];
+var categories = ['Popular Movies', 'R Movies', 'Kids Movies'];
 
 class MovieCategories extends Component {
 	constructor() {
@@ -8,23 +8,27 @@ class MovieCategories extends Component {
 		this.selectMovie = this.selectMovie.bind(this);
 	}
 	selectMovie(id) {
-		this.props.handleMovieModal(true);
-		this.props.chooseMovie(id);
+		let { handleMovieModal, chooseMovie } = this.props;
+		handleMovieModal(true);
+		chooseMovie(id);
 	}
 	render() {
-		const { upcomingMovies, popularMovies, rMovies, kidsMovies } = this.props;
-		const propArray = [upcomingMovies, popularMovies, rMovies, kidsMovies];
+		const { popularMovies, rMovies, kidsMovies } = this.props;
+		let propArray = [popularMovies, rMovies, kidsMovies];
+		const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 		return (
 			<div className="categories">
 				{categories.map((cat, i) => {
 					return (
 						<div className="row" key={i}>
-							<h1 style={{fontSize: '1.5rem'}}>{cat}</h1>
+							<h2>{cat}</h2>
 							<div className="movies">
 								{propArray[i].map((movie) => {
+									let { id, poster_path } = movie;
 									return (
-										<div key={movie.id} onClick={e => this.selectMovie(movie.id)}>
-											<h5>{movie.title}</h5>
+										<div className="col" key={id} onClick={e => this.selectMovie(id)}>
+											<div className="movie" style={{backgroundImage: poster_path !== undefined && poster_path !== null ? `url('${POSTER_URL}/${poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
+											</div>
 										</div>
 									)
 								})}

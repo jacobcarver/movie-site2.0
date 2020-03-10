@@ -1,0 +1,26 @@
+#results {
+	.container {
+		.results {
+			display: flex;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			-ms-overflow-style: none;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			.col {
+				display: flex;
+				.movie {
+					min-width: 300px;
+					height: calc(300px * 1.5);
+					background-size: cover;
+					background-position: center;
+					background-repeat: no-repeat;
+				}
+			}
+		}
+		.no-results {
+			font-size: 2rem;
+		}
+	}
+}

@@ -1,0 +1,38 @@
+#shows {
+	.container {
+		h1 {
+			font-size: 2rem;
+			margin-bottom: 6rem;
+		}
+		.list {
+			display: flex;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			-ms-overflow-style: none;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			.col {
+				display: flex;
+				padding: 1.5rem;
+				cursor: pointer;
+				&:first-of-type {
+					padding-left: 0;
+				}
+				&:last-of-type {
+					padding-right: 0;
+				}
+				.show {
+					min-width: 300px;
+					height: calc(300px * 1.5);
+					background-size: cover;
+					background-position: center;
+					background-repeat: no-repeat;
+					h3 {
+
+					}
+				}
+			}
+		}
+	}
+}
