@@ -2,25 +2,29 @@ import React, { Component } from 'react';
 
 class Shows extends Component {
 	UNSAFE_componentWillMount() {
-		const { tvShows, getTvShows } = this.props;
+		let { tvShows, getTvShows } = this.props;
 		if (tvShows.length <= 0) {
 			getTvShows();
 		}
 	}
 	render() {
 		const { tvShows, handleTvModal, chooseShow } = this.props;
+		const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 		return (
 			<div id="shows">
 				<div className="container">
 					<h1>Shows</h1>
 					<div className="list">
 						{tvShows.map((show) => {
+							let { poster_path, id, original_name } = show;
 							return (
-								<div key={show.id} onClick={e => {
+								<div className="col" key={id} onClick={e => {
 									handleTvModal(true);
-									chooseShow(show.id);
+									chooseShow(id);
 								}}>
-									<h3>{show.original_name}</h3>
+									<div className="show" style={{backgroundImage: `url('${POSTER_URL}/${poster_path}')`}}>
+										<h3>{original_name}</h3>
+									</div>
 								</div>
 							)
 						})}

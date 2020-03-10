@@ -29,9 +29,6 @@ class Navigation extends Component {
         return (
             <div id="navigation">
 				<div className="container">
-					<div className="brand">
-						<Link to="/">MoviePro</Link>
-					</div>
 					<div className="links">
 						<Link to="/" className={`${window.location.pathname === '/' ? 'active' : ''}`}>Home <span></span></Link>
 						<Link to="/discover" className={`${window.location.pathname === '/discover' ? 'active' : ''}`}>Movies <span></span></Link>

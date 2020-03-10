@@ -15,21 +15,27 @@ class Results extends Component {
 	}
 	render() {
 		const { searchResults } = this.props;
+		const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 		return (
 			<div id="results">
 				<div className="container">
 					{searchResults.length > 0 ? 
-					<div>
-						{searchResults.map((movie, i) => {
+					<div className="results">
+						{searchResults.map((movie) => {
+							let { id, title, poster_path } = movie;
 							return (
-								<div onClick={e => this.selectMovie(movie.id)} key={i}>
-									<h3>{movie.title}</h3>
+								<div className="col" onClick={e => this.selectMovie(id)} key={id}>
+									<div className="movie" style={{backgroundImage: poster_path !== undefined && poster_path !== null ? `url('${POSTER_URL}/${poster_path}')` : `url('https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg')`}}>
+										<h3>{title}</h3>
+									</div>
 								</div>
 							)
 						})}
 					</div>
 					:
-					<h1>No Results</h1>}
+					<div className="no-results">
+						No Results
+					</div>}
 				</div>
 			</div>
 		)
