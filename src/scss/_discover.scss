@@ -84,7 +84,8 @@
 					}
 					.poster {
 						height: calc(100% - 15vw);
-						min-width: calc(100% - 70vw);
+						width: calc(100% - 70vw);
+						min-width: 275px;
 						background-position: center;
 						background-repeat: no-repeat;
 						background-size: cover;
@@ -115,6 +116,12 @@
 				}
 			}
 			.movies {
+				// &.loop-scroll {
+				// 	&:first-of-type {
+				// 		overflow: auto;
+				// 		-webkit-overflow-scrolling: touch;
+				// 	}
+				// }
 				.overflow {
 					width: 100%;
 					height: 100%;
@@ -129,7 +136,7 @@
 					will-change: transform;
 					.col {
 						padding: 0 1.5rem;
-						min-width: 400px;
+						min-width: 375px;
 						&.active {
 							.movie {
 								opacity: 1;
@@ -229,6 +236,7 @@
 					overflow-x: scroll;
 					border-radius: 8px;
 					-ms-overflow-style: none;
+					-webkit-overflow-scrolling: touch;
 					&::-webkit-scrollbar {
 						display: none;
 					}
@@ -254,6 +262,102 @@
 							h5 {
 
 							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	#discover {
+		.container {
+			main.current-movie {
+				.current-movie-info {
+					img {
+
+					}
+					.inner {
+						flex-direction: column;
+						align-items: initial;
+						align-items: flex-end;
+						.movie {
+							width: 100%;
+							padding: 1.5rem 0 0;
+							h6 {
+							}
+							h1 {
+								font-size: 2.5rem;
+							}
+							p {
+
+							}
+						}
+						.poster {
+							max-height: 250px;
+							height: 100%;
+							min-width: initial;
+							min-width: 175px;
+							margin-top: -0.5rem;
+						}
+					}
+					.toggler {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#discover {
+		.container {
+			main.current-movie {
+				.current-movie-info {
+					img {}
+
+					.inner {
+						flex-direction: column;
+						align-items: initial;
+						align-items: flex-end;
+
+						.movie {
+							width: 100%;
+							padding: 1.5rem 0 0;
+
+							h6 {
+								margin-bottom: 1.5rem;
+							}
+
+							h1 {
+								font-size: 2.25rem;
+								margin-bottom: 1.5rem;
+							}
+
+							.rating {
+								margin-bottom: 3rem;
+							}
+
+							p {}
+						}
+
+						.poster {
+							display: none;
+						}
+					}
+					.toggler {
+						display: flex;
+					}
+				}
+				.movies {
+					.overflow {
+						overflow-x: hidden;
+						.swipes {
+
+							// overflow:
+							.col {}
 						}
 					}
 				}

@@ -37,7 +37,7 @@ const CurrentMovie = (props) => {
 
 			<div className="movies">
 				<div className="overflow">
-					<div className="swipes" style={{transform: `translateX(${-400 * movieIndex}px)`}}>
+					<div className="swipes" style={{transform: `translateX(${-375 * movieIndex}px)`}}>
 						{upcomingMovies.map((movie) => {
 							let { id, title, poster_path } = movie;
 							return (
