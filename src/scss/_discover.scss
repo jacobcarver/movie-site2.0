@@ -11,9 +11,17 @@
 				max-height: 75vh;
 				display: flex;
 				position: relative;
-				-webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.5);
-				-moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.5);
-				box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.5);
+				-webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.75);
+				-moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.75);
+				box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.75);
+				overflow: hidden;
+				img {
+					position: absolute;
+					height: 100%;
+					width: 100%;
+					z-index: -1;
+					filter: blur(4px);
+				}
 				.inner {
 					background: rgba(0, 0, 0, 0.85);
 					width: 100%;
@@ -28,13 +36,14 @@
 						h6 {
 							text-transform: uppercase;
 							opacity: 0.5;
-							font-weight: 600;
+							font-weight: 700;
 							margin-bottom: 1rem;
 						}
 						h1 {
 							font-size: 3rem;
 							margin-bottom: 1rem;
 							line-height: 1.2;
+							font-weight: 600;
 						}
 						.rating {
 							display: flex;
@@ -43,7 +52,7 @@
 								i {
 									padding-right: 0.5rem;
 									&.fas {
-										color: $primary;
+										color: $pink;
 									}
 								}
 							}
@@ -52,19 +61,25 @@
 							}
 						}
 						p {
-							line-height: 1.8;
+							overflow: hidden;
+							display: -webkit-box;
+							-webkit-line-clamp: 4;
+							-webkit-box-orient: vertical;
 							margin-bottom: 2rem;
+							line-height: 1.8;
+							color: #c7c7c7;
 						}
 						button {
 							outline: none;
-							background: $primary;
+							background: $purple;
 							border: none;
+							cursor: pointer;
 							font-size: 0.925rem;
-							color: #252525;
+							color: $black;
 							padding: 0.5rem 1rem;
 							border-radius: 4px;
 							text-transform: uppercase;
-							font-weight: 600;
+							font-weight: 400;
 						}
 					}
 					.poster {
@@ -117,7 +132,8 @@
 						min-width: 400px;
 						&.active {
 							.movie {
-								border: 2px solid rgba(255, 255, 255, 0.1);
+								opacity: 1;
+								border: 2px solid white;
 								.movie-poster {
 									opacity: 1;
 								}
@@ -128,22 +144,24 @@
 										text-shadow: 0px 0px 2px white;
 									}
 									button {
-										border: none;
+										border-color: transparent;
 										opacity: 1;
 										color: #252525;
-										background: $primary;
+										background: $pink;
 									}
 								}
 							}
 						}
 						.movie {
-							border: 2px solid rgba(0, 0, 0, 0.2);
+							border: 2px solid white;
+							opacity: 0.2;
 							padding: 1.5rem;
 							display: flex;
 							border-radius: 8px;
 							max-height: 150px;
 							min-height: 150px;
 							transition: all 1s ease-in-out;
+							cursor: pointer;
 							.movie-poster {
 								height: 150px;
 								min-width: calc(150px / 1.5);
@@ -156,7 +174,6 @@
 								-moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.5);
 								box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.5);
 								transition: all 1s ease-in-out;
-								opacity: 0.75;
 							}
 							.movie-info {
 								padding: 1rem 1rem 1rem 1.5rem;
@@ -166,29 +183,29 @@
 								flex-direction: column;
 								transition: all 1s ease-in-out;
 								h4 {
-									color: black;
+									color: white;
 									margin-bottom: 0.5rem;
 									font-size: 1.2rem;
 									line-height: 1.2;
-									opacity: 0.4;
+									// opacity: 0.2;
 									width: 100%;
 									white-space: nowrap;
 									overflow: hidden;
 									min-height: 25px;
 									text-overflow: ellipsis;
 									transition: all 1s ease-in-out;
+									font-weight: 600;
 								}
 								button {
 									background: none;
-									color: black;
-									opacity: 0.4;
-									border: 2px solid black;
+									color: white;
+									border: 2px solid white;
 									padding: 0.5rem 1rem;
 									text-transform: uppercase;
 									transition: all 1s ease-in-out;
 									border-radius: 6px;
 									max-width: 100px;
-									font-weight: 600;
+									font-weight: 400;
 									cursor: pointer;
 								}
 							}
@@ -201,7 +218,6 @@
 			.row {
 				margin-bottom: 6rem;
 				padding-bottom: 3rem;
-				border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 				h2 {
 					font-size: 1.5rem;
 					margin-bottom: 3rem;
@@ -211,12 +227,13 @@
 				.movies {
 					display: flex;
 					overflow-x: scroll;
+					border-radius: 8px;
 					-ms-overflow-style: none;
 					&::-webkit-scrollbar {
 						display: none;
 					}
 					.col {
-						min-width: 300px;
+						min-width: 250px;
 						padding: 0 1.5rem;
 						cursor: pointer;
 						&:first-of-type {
@@ -226,7 +243,7 @@
 							padding-right: 0;
 						}
 						.movie {
-							height: calc(300px * 1.25);
+							height: calc(250px * 1.25);
 							background-size: cover;
 							background-position: center;
 							background-repeat: no-repeat;

@@ -5,7 +5,8 @@ const CurrentMovie = (props) => {
 	const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 	return (
 		<main className="current-movie">
-			<div className="current-movie-info" style={{backgroundImage: upcomingMovies[movieIndex].backdrop_path !== undefined && upcomingMovies[movieIndex].backdrop_path !== null ? `url('${POSTER_URL}/${upcomingMovies[movieIndex].backdrop_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
+			<div className="current-movie-info">
+				<img src={upcomingMovies[movieIndex].backdrop_path !== undefined && upcomingMovies[movieIndex].backdrop_path !== null ? `${POSTER_URL}/${upcomingMovies[movieIndex].backdrop_path}` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'} />
 				<div className="inner">
 					<div className="movie">
 						<h6>Production Company</h6>
@@ -41,14 +42,14 @@ const CurrentMovie = (props) => {
 							let { id, title, poster_path } = movie;
 							return (
 								<div className={`col ${id === upcomingMovies[movieIndex].id ? 'active': ''}`} key={id}>
-									<div className="movie">
+									<div className="movie" onClick={() => {
+										chooseMovie(id);
+										handleMovieModal(true);
+									}}>
 										<div className="movie-poster" style={{backgroundImage: poster_path !== undefined && poster_path !== null ? `url('${POSTER_URL}/${poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}></div>
 										<div className="movie-info">
 											<h4>{title}</h4>
-											<button onClick={() => {
-												chooseMovie(id);
-												handleMovieModal(true);
-											}}>View More</button>
+											<button>View More</button>
 										</div>
 									</div>
 								</div>
