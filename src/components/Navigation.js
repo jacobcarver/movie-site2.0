@@ -32,7 +32,7 @@ class Navigation extends Component {
 					<div className="links">
 						<Link to="/" className={`${window.location.pathname === '/' ? 'active' : ''}`}>Home <span></span></Link>
 						<Link to="/discover" className={`${window.location.pathname === '/discover' ? 'active' : ''}`}>Movies <span></span></Link>
-						<Link to="/shows" className={`${window.location.pathname === '/shows' ? 'active' : ''}`}>TV Shows <span></span></Link>
+						<Link to="/shows" className={`${window.location.pathname === '/shows' ? 'active' : ''}`}>TV <span></span></Link>
 						<Link to="/search" className={`${window.location.pathname === '/search' ? 'active' : ''}`}>Search <span></span></Link>
 					</div>
 					<form onSubmit={this.handleSearch} className="search">

@@ -71,15 +71,15 @@
 						}
 						button {
 							outline: none;
-							background: $purple;
+							background: $pink;
 							border: none;
 							cursor: pointer;
-							font-size: 0.925rem;
+							font-size: 0.825rem;
 							color: $black;
 							padding: 0.5rem 1rem;
 							border-radius: 4px;
 							text-transform: uppercase;
-							font-weight: 400;
+							font-weight: 600;
 						}
 					}
 					.poster {
@@ -228,8 +228,9 @@
 									transition: all 0.5s ease-in-out;
 									border-radius: 6px;
 									max-width: 100px;
-									font-weight: 400;
+									font-weight: 600;
 									cursor: pointer;
+									font-size: 0.625rem;
 									&:hover {
 										border-color: transparent;
 										opacity: 1;
@@ -263,17 +264,23 @@
 						display: none;
 					}
 					.col {
+						width: 40%;
 						min-width: 250px;
 						padding: 0 1.5rem;
+						display: flex;
+						height: 100%;
+						justify-content: center;
 						cursor: pointer;
 						&:first-of-type {
-							padding-left: 0;
+							// padding-left: 0;
 						}
 						&:last-of-type {
-							padding-right: 0;
+							// padding-right: 0;
 						}
 						.movie {
-							height: calc(250px * 1.25);
+							min-height: calc(250px * 1.25);
+							width: 100%;
+							max-width: 200px;
 							background-size: cover;
 							background-position: center;
 							background-repeat: no-repeat;

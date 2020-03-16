@@ -57,7 +57,7 @@ class Discover extends Component {
 	}
 	throttle(fn) {
 		const { time } = this.state;
-		if ((time + 1500 - Date.now()) < 0) {
+		if ((time + 1000 - Date.now()) < 0) {
 			fn();
 			this.setState({ time: Date.now() });
 		}
