@@ -13,7 +13,6 @@ class Shows extends Component {
 		return (
 			<div id="shows">
 				<div className="container">
-					<h1>Shows</h1>
 					<div className="list">
 						{tvShows.map((show) => {
 							let { poster_path, id, original_name } = show;

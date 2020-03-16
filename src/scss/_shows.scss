@@ -1,21 +1,13 @@
 #shows {
 	.container {
-		h1 {
-			font-size: 2rem;
-			margin-bottom: 6rem;
-		}
 		.list {
 			display: flex;
-			overflow-x: scroll;
-			overflow-y: hidden;
-			-ms-overflow-style: none;
-			&::-webkit-scrollbar {
-				display: none;
-			}
+			flex-wrap: wrap;
 			.col {
 				display: flex;
 				padding: 1.5rem;
-				cursor: pointer;
+				width: 25%;
+				justify-content: center;
 				&:first-of-type {
 					padding-left: 0;
 				}
@@ -23,11 +15,12 @@
 					padding-right: 0;
 				}
 				.show {
-					min-width: 300px;
-					height: calc(300px * 1.5);
+					min-width: 250px;
+					height: calc(250px * 1.5);
 					background-size: cover;
 					background-position: center;
 					background-repeat: no-repeat;
+					cursor: pointer;
 					h3 {
 
 					}

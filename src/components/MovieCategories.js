@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CategoryRow from './CategoryRow';
 
 var categories = ['Popular Movies', 'R Movies', 'Kids Movies'];
 
@@ -81,46 +82,13 @@ class MovieCategories extends Component {
 		// }, 250);
 	}
 	render() {
-		const { popularMovies, rMovies, kidsMovies } = this.props;
+		const { popularMovies, rMovies, kidsMovies, handleMovieModal, chooseMovie } = this.props;
 		let propArray = [popularMovies, rMovies, kidsMovies];
-		let { context, clones } = this.state;
-		const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
-		// if (context !== null && clones !== undefined) {
-		// 	this.reCalc();			
-		// 	context.addEventListener('scroll', () => {
-		// 		window.requestAnimationFrame(this.scrollUpdate);
-		// 	}, false);
-
-		// 	window.addEventListener('resize', () => {
-		// 		window.requestAnimationFrame(this.reCalc);
-		// 	}, false);
-		// }
 		return (
 			<div className="categories">
 				{categories.map((cat, i) => {
 					return (
-						<div className="row" key={i}>
-							<h2>{cat}</h2>
-							<div className="movies loop-scroll">
-								{propArray[i].map((movie) => {
-									let { id, poster_path } = movie;
-									return (
-										<div className="col" key={id} onClick={e => this.selectMovie(id)}>
-											<div className="movie" style={{backgroundImage: poster_path !== undefined && poster_path !== null ? `url('${POSTER_URL}/${poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
-											</div>
-										</div>
-									)
-								})}
-								{propArray[i][0] !== undefined ? <div className="col is-clone" key={propArray[i][0].id}>
-									<div className="movie" style={{backgroundImage: propArray[i][0].poster_path !== undefined && propArray[i][0].poster_path !== null ? `url('${POSTER_URL}/${propArray[i][0].poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
-									</div>
-								</div> : null}
-								{propArray[i][0] !== undefined ? <div className="col is-clone" key={propArray[i][1].id}>
-									<div className="movie" style={{backgroundImage: propArray[i][1].poster_path !== undefined && propArray[i][1].poster_path !== null ? `url('${POSTER_URL}/${propArray[i][1].poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
-									</div>
-								</div> : null}
-							</div>
-						</div>
+						<CategoryRow key={i} cat={cat} i={i} handleMovieModal={handleMovieModal} chooseMovie={chooseMovie} propArray={propArray} />
 					)
 				})}
 			</div>

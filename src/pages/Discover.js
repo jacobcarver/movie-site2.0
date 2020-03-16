@@ -85,7 +85,9 @@ class Discover extends Component {
 			<div id="discover">
 				<div className="container">
 					{upcomingMovies[movieIndex] !== undefined ? <CurrentMovie throttle={this.throttle} handleRight={this.handleRight} handleLeft={this.handleLeft} handleMovieModal={handleMovieModal} chooseMovie={chooseMovie} upcomingMovies={upcomingMovies} movieIndex={movieIndex} /> : null}
+					{upcomingMovies.length > 0 && popularMovies.length > 0 && rMovies.length > 0 && kidsMovies.length > 0 ? 
 					<MovieCategories handleMovieModal={handleMovieModal} movieIsOpen={movieIsOpen} chosenMovie={chosenMovie} chooseMovie={chooseMovie} upcomingMovies={upcomingMovies} popularMovies={popularMovies} rMovies={rMovies} kidsMovies={kidsMovies} />
+					: null}
 				</div>
 			</div>
 		)
