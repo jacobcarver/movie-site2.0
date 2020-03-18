@@ -22,6 +22,7 @@ class Shows extends Component {
 									chooseShow(id);
 								}}>
 									<div className="show" style={{backgroundImage: `url('${POSTER_URL}/${poster_path}')`}}>
+										<div className="overlay"></div>
 										<h3>{original_name}</h3>
 									</div>
 								</div>

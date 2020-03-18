@@ -64,10 +64,13 @@ class Discover extends Component {
 	}
 	componentDidMount() {
 		this.projectTimer = setInterval(() => {
-			if (!this.props.movieIsOpen) {
+			if (!this.props.movieIsOpen && window.location.pathname === '/discover') {
 				this.updateMovieIndex();
 			}
 		}, 10000);
+	}
+	componentWillUnmount() {
+		this.projectTimer = null;
 	}
 	render() {
 		const {

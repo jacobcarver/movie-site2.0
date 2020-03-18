@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 class CategoryRow extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
-			context: document.querySelector(`.loop-scroll${props.i}`),
-			clones: document.querySelectorAll(`.is-clone${props.i}`),
+			context: null,
+			clones: null,
 			clonesWidth: 0
 		}
 		this.selectMovie = this.selectMovie.bind(this);
@@ -70,6 +70,7 @@ class CategoryRow extends Component {
 		let { i } = this.props;
 		setTimeout(() => {
 			if (document.querySelector(`.loop-scroll${i}`) !== null && document.querySelectorAll(`.is-clone${i}`) !== null) {
+				console.log(document.querySelector(`.loop-scroll${i}`));
 				this.setState({
 					context: document.querySelector(`.loop-scroll${i}`),
 					clones: document.querySelectorAll(`.is-clone${i}`)

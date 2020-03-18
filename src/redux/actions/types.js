@@ -6,4 +6,5 @@ export const KIDS_MOVIES = 'KIDS_MOVIES';
 export const TV_SHOWS = 'TV_SHOWS';
 export const CHOOSE_MOVIE = 'CHOOSE_MOVIE';
 export const GET_TRAILERS = 'GET_TRAILERS';
-export const CHOOSE_SHOW = 'CHOOSE_SHOW'
+export const CHOOSE_SHOW = 'CHOOSE_SHOW';
+export const OMDB_DATA = 'OMDB_DATA';

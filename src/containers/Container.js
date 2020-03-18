@@ -12,7 +12,8 @@ import {
 	getTvShows,
 	chooseMovie,
 	getTrailers,
-	chooseShow
+	chooseShow,
+	getOmdbData
 } from '../redux/actions/actions';
 
 // Pages
@@ -54,6 +55,8 @@ class Container extends Component {
 			trailers,
 			chooseShow,
 			chosenShow,
+			getOmdbData,
+			omdbData
 		} = this.props;
 		const { movieIsOpen, tvIsOpen } = this.state
 		return (
@@ -65,7 +68,7 @@ class Container extends Component {
 					<Route path={process.env.PUBLIC_URL + '/shows'} render={() => <Shows handleTvModal={this.handleTvModal} chooseShow={chooseShow} getTvShows={getTvShows} tvShows={tvShows} />} exact />
 					<Route path={process.env.PUBLIC_URL + '/search'} render={() => <Results handleMovieModal={this.handleMovieModal} movieIsOpen={movieIsOpen} trailers={trailers} getTrailers={getTrailers} chooseMovie={chooseMovie} chosenMovie={chosenMovie} searchResults={searchResults} />} exact />
 				</Switch>
-				<MovieModal handleMovieModal={this.handleMovieModal} movieIsOpen={movieIsOpen} getTrailers={getTrailers} trailers={trailers} chosenMovie={chosenMovie} />
+				<MovieModal getOmdbData={getOmdbData} omdbData={omdbData} handleMovieModal={this.handleMovieModal} movieIsOpen={movieIsOpen} getTrailers={getTrailers} trailers={trailers} chosenMovie={chosenMovie} />
 				<TvModal handleTvModal={this.handleTvModal} tvIsOpen={tvIsOpen} chosenShow={chosenShow} />
 			</div>
 		)
@@ -90,7 +93,9 @@ Container.propTypes = {
 	getTrailers: PropTypes.func.isRequired,
 	trailers: PropTypes.array.isRequired,
 	chooseShow: PropTypes.func.isRequired,
-	chosenShow: PropTypes.object.isRequired
+	chosenShow: PropTypes.object.isRequired,
+	getOmdbData: PropTypes.func.isRequired,
+	omdbData: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -102,7 +107,8 @@ const mapStateToProps = state => ({
 	tvShows: state.movieData.tvShows,
 	chosenMovie: state.movieData.chosenMovie,
 	trailers: state.movieData.trailers,
-	chosenShow: state.movieData.chosenShow
+	chosenShow: state.movieData.chosenShow,
+	omdbData: state.movieData.omdbData
 })
 
 export default connect(mapStateToProps, {
@@ -114,5 +120,6 @@ export default connect(mapStateToProps, {
 	getTvShows,
 	chooseMovie,
 	getTrailers,
-	chooseShow
+	chooseShow,
+	getOmdbData
 })((Container));

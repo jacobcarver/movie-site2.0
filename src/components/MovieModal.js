@@ -20,8 +20,9 @@ class MovieModal extends Component {
 	}
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		const { chosenMovie, getTrailers } = nextProps;
-		if (chosenMovie !== this.props.chosenMovie) {
+		if (chosenMovie !== this.props.chosenMovie && chosenMovie.id !== undefined) {
 			getTrailers(chosenMovie.id);
+			this.props.getOmdbData(chosenMovie.imdb_id);
 		}
 	}
 	toggleTrailer(bool) {

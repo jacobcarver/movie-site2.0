@@ -6,7 +6,8 @@ class Home extends Component {
 			<div id="home">
 				<main>
 					<h1>Explore thousands of movies</h1>
-					<h2>All movie trailers in one spot</h2>
+					<h2>View popular movies, watch trailers, and browse TV shows all in one place</h2>
+					<div className="overlay"></div>
 				</main>
 				<div className="container">
 					<section className="pricing">

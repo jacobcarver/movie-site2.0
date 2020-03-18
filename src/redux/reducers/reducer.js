@@ -7,7 +7,8 @@ import {
 	TV_SHOWS,
 	CHOOSE_MOVIE,
 	GET_TRAILERS,
-	CHOOSE_SHOW
+	CHOOSE_SHOW,
+	OMDB_DATA
 } from '../actions/types';
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
 	tvShows: [],
 	chosenMovie: {},
 	trailers: [],
-	chosenShow: {}
+	chosenShow: {},
+	omdbData: {}
 };
 
 export default (state = initialState, action) => {
@@ -68,6 +70,11 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				chosenShow: action.payload
+			}
+		case OMDB_DATA:
+			return {
+				...state,
+				omdbData: action.payload
 			}
 		default:
 			return state;

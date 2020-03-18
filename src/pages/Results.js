@@ -34,6 +34,7 @@ class Results extends Component {
 							return (
 								<div className="col" key={id}>
 									<div className="movie" onClick={e => this.selectMovie(id)} style={{backgroundImage: poster_path !== undefined && poster_path !== null ? `url('${POSTER_URL}/${poster_path}')` : `url('https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg')`}}>
+										<div className="overlay"></div>
 										<h3>{title}</h3>
 									</div>
 								</div>

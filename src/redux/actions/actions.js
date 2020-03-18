@@ -9,7 +9,8 @@ import {
 	TV_SHOWS,
 	CHOOSE_MOVIE,
 	GET_TRAILERS,
-	CHOOSE_SHOW
+	CHOOSE_SHOW,
+	OMDB_DATA
 } from './types';
 
 // API Info
@@ -113,4 +114,19 @@ export const chooseShow = id => dispatch => {
 				payload: response.data
 			});
 		});
+}
+
+// Get OMDB Data
+export const getOmdbData = id => dispatch => {
+	// OMDB API
+	const omdb_key = 'apikey=5d02e9db';
+	const omdb_url = 'https://www.omdbapi.com';
+	axios.get(`${omdb_url}/?i=${id}&${omdb_key}`)
+		.then((response) => {
+			console.log(response.data);
+			dispatch({
+				type: OMDB_DATA,
+				payload: response.data
+			})
+		})
 }

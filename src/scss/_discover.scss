@@ -341,6 +341,9 @@
 }
 
 @media screen and (max-width: 480px) {
+	.app {
+		overflow-x: hidden;
+	}
 	#discover {
 		.container {
 			main.current-movie {
@@ -382,7 +385,7 @@
 				}
 				.movies {
 					.overflow {
-						overflow: hidden;
+						
 						.swipes {
 
 							// overflow:

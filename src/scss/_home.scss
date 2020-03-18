@@ -1,42 +1,64 @@
 #home {
-	background: black;
+	position: relative;
+	margin-top: -146px;
+	display: flex;
+	padding-top: 100vh;
+	z-index: -1;
 	main {
 		position: absolute;
 		top: 0;
+		width: 100vw;
 		color: white;
 		height: 100vh;
 		display: flex;
-		width: 100%;
 		justify-content: center;
 		flex-direction: column;
 		padding: 0 calc(40vw / 4);
+		overflow: hidden;
 		z-index: -1;
 		// background-image: url('https://image.tmdb.org/t/p/w500//xFxk4vnirOtUxpOEWgA1MCRfy6J.jpg');
 		background-image: url('https://wallpaperaccess.com/full/37943.jpg');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
+		.overlay{
+			position: absolute;
+			height: 100%;
+			left: 0;
+			width: 100%;
+			z-index: -1;
+			background: rgba(0, 0, 0, 0.5);
+		}
 		h1 {
 			font-weight: 600;
 			font-size: 3rem;
-			margin-bottom: 1.5rem;
+			margin-bottom: 2rem;
+			text-transform: capitalize;
+			line-height: 1.2;
 		}
 		h2 {
-			color: rgb(211, 211, 211);
-			font-size: 1.5rem;
+			color: rgb(161, 161, 161);
+			font-size: 1.2rem;
+			max-width: 600px;
+			line-height: 1.6;
 		}
 	}
 	.container {
-		position: absolute;
-		top: 100%;
-		width: calc(40vw * 2.25);
-		left: 50%;
-		transform: translateX(-50%);
-		padding: 6rem 0;
+		position: relative;
+		// top: 100%;
+		// width: calc(40vw * 2.25);
+		// left: 50%;
+		// transform: translateX(-50%);
+		// padding: 6rem 0;
 		section {
 			&.pricing {
+				padding: 4rem 0;
 				h3 {
-
+					color: white;
+					font-size: 1.5rem;
+					text-shadow: 0 0 2px white;
+					margin-bottom: 1.5rem;
+					text-align: center;
 				}
 				.prices {
 					display: flex;
@@ -44,15 +66,9 @@
 					justify-content: center;
 					.col {
 						width: 33.333%;
-						padding: 0 1.5rem;
+						padding: 1.5rem;
 						max-width: 375px;
 						min-width: 375px;
-						&:first-of-type {
-							padding-left: 0;
-						}
-						&:last-of-type {
-							padding-right: 0;
-						}
 						.price {
 							background: black;
 							border-radius: 1rem;
@@ -100,6 +116,20 @@
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#home {
+		main {
+			h1 {
+				font-size: 2rem;
+				max-width: 350px;
+			}
+			h2 {
+				max-width: 350px;
 			}
 		}
 	}
