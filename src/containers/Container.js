@@ -68,6 +68,50 @@ class Container extends Component {
 					<Route path={process.env.PUBLIC_URL + '/shows'} render={() => <Shows handleTvModal={this.handleTvModal} chooseShow={chooseShow} getTvShows={getTvShows} tvShows={tvShows} />} exact />
 					<Route path={process.env.PUBLIC_URL + '/search'} render={() => <Results handleMovieModal={this.handleMovieModal} movieIsOpen={movieIsOpen} trailers={trailers} getTrailers={getTrailers} chooseMovie={chooseMovie} chosenMovie={chosenMovie} searchResults={searchResults} />} exact />
 				</Switch>
+				<footer>
+					<div className="container">
+						<div className="row">
+							<div className="logo">LOGO</div>
+							<div className="socials">
+								<a href="#"><i className="fab fa-facebook-f"></i></a>
+								<a href="#"><i className="fab fa-twitter"></i></a>
+								<a href="#"><i className="fab fa-youtube"></i></a>
+								<a href="#"><i className="fab fa-instagram"></i></a>
+							</div>
+						</div>
+						<div className="divider"></div>
+						<div className="row middle">
+							<div className="links">
+								<div className="col">
+									<h6>Links</h6>
+									<ul>
+										<li>Home</li>
+										<li>Movies</li>
+										<li>TV</li>
+										<li>Search</li>
+										<li>Pricing</li>
+										<li>About</li>
+										<li>FAQs</li>
+										<li>Contact</li>
+									</ul>
+								</div>
+								<div className="col">
+									<h6>Contact</h6>
+									<ul>
+										<li>info@example.com</li>
+										<li>+800 123 4321</li>
+										<li>exampledomain.com</li>
+										<li>1234 Address LN. 90506</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div className="row">
+							<p>Copyright &copy; - 2020</p>
+							<p><span>Privacy</span> <span>Terms & Conditions</span></p>
+						</div>
+					</div>
+				</footer>
 				<MovieModal getOmdbData={getOmdbData} omdbData={omdbData} handleMovieModal={this.handleMovieModal} movieIsOpen={movieIsOpen} getTrailers={getTrailers} trailers={trailers} chosenMovie={chosenMovie} />
 				<TvModal handleTvModal={this.handleTvModal} tvIsOpen={tvIsOpen} chosenShow={chosenShow} />
 			</div>

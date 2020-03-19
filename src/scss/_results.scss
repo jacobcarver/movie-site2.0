@@ -1,4 +1,5 @@
 #results {
+	padding-bottom: 3rem;
 	.container {
 		.results {
 			display: flex;
@@ -60,8 +61,8 @@
 		}
 		.no-results {
 			font-size: 2rem;
-			min-height: 75vh;
-			max-height: 75vh;
+			min-height: 77vh;
+			max-height: 77vh;
 			display: flex;
 			align-items: center;
 			justify-content: center;
