@@ -46,7 +46,7 @@ const CurrentMovie = (props) => {
 						{upcomingMovies.map((movie) => {
 							let { id, title, poster_path } = movie;
 							return (
-								<div className={`col ${id === id ? 'active': ''}`} key={id}>
+								<div className={`col ${id === upcomingMovies[movieIndex].id ? 'active': ''}`} key={id}>
 									<div className="movie" onClick={() => {
 										chooseMovie(id);
 										handleMovieModal(true);

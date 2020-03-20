@@ -14,7 +14,7 @@ class EmbeddedVideo extends Component {
 			<div className="embedded-video">
 				{video !== undefined && trailerIsOpen === true && movieIsOpen === true ? 
 				<div>
-					<h1 style={{fontSize: '2rem'}} onClick={e => toggleTrailer(false)}>EXIT</h1>
+					<div className="close-trailer" onClick={e => toggleTrailer(false)}><i className="fas fa-times"></i></div>
 					<iframe title="ytplayer" id="message-id" type="text/html" width="650" height="350" allow="autoplay; fullscreen"
 					src={video.key !== undefined ? `https://www.youtube.com/embed/${video.key}?rel=0&modestbranding=1&autohide=1&mute=0&showinfo=0&controls=1&autoplay=1` : ''}
 					frameBorder="0"></iframe>

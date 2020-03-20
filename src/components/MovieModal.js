@@ -61,37 +61,40 @@ class MovieModal extends Component {
 							</div>
 							<p className="desc">{overview}</p>
 							<p className="tagline">- "{tagline}"</p>
-							<div className="genres">
-								{genres !== undefined ? genres.map((g) => {
-									return (
-										<span key={g.id}>"{g.name}"</span>
-									)
-								}) : ''}
-							</div>
 							<div className="cast">
 								<h2>Director</h2>
-								<p>{Director}</p>
+								<p className="directors">{Director}</p>
 								<h2>Writer(s)</h2>
-								<p>{Writer}</p>
+								<p className="writers">{Writer}</p>
 								<h2>Actors</h2>
 								{Actors.split(', ').map((a) => {
 									return (
-										<p key={a}>{a}</p>
+										<p className="actors" key={a}>{a}</p>
 									)
 								})}
 							</div>
+							{Ratings.length >= 1 ? 
 							<div className="ratings">
+								<h2>Ratings</h2>
 								{Ratings.map((r) => {
 									let { Source, Value } = r;
 									return (
 										<p key={Source}>{Source}: <span>{Value}</span></p>
 									)
 								})}
-							</div>
-							<button onClick={e => this.toggleTrailer(true)}>Watch Trailer</button>
+							</div> : null}
 						</div>
-						<div className="movie-poster" style={{backgroundImage: poster_path !== undefined ? `url('${POSTER_URL}/${poster_path}')` : ''}}>
-							
+						<div className="movie-poster">
+							<div className="poster" style={{backgroundImage: poster_path !== undefined ? `url('${POSTER_URL}/${poster_path}')` : ''}}>
+								<div className="trailer-button" onClick={e => this.toggleTrailer(true)}><i className="fas fa-ticket-alt"></i></div>
+							</div>
+							<div className="genres">
+								{genres !== undefined ? genres.map((g) => {
+									return (
+										<span key={g.id}>{g.name}</span>
+									)
+								}) : null}
+							</div>
 						</div>
 					</main>
 					<EmbeddedVideo movieIsOpen={movieIsOpen} trailerIsOpen={trailerIsOpen} toggleTrailer={this.toggleTrailer} video={trailers[0]} />
