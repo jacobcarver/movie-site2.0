@@ -73,17 +73,17 @@ class Container extends Component {
 						<div className="row">
 							<div className="logo">LOGO</div>
 							<div className="socials">
-								<a href="#"><i className="fab fa-facebook-f"></i></a>
-								<a href="#"><i className="fab fa-twitter"></i></a>
-								<a href="#"><i className="fab fa-youtube"></i></a>
-								<a href="#"><i className="fab fa-instagram"></i></a>
+								<a href="/"><i className="fab fa-facebook-f"></i></a>
+								<a href="/"><i className="fab fa-twitter"></i></a>
+								<a href="/"><i className="fab fa-youtube"></i></a>
+								<a href="/"><i className="fab fa-instagram"></i></a>
 							</div>
 						</div>
 						<div className="divider"></div>
 						<div className="row middle">
 							<div className="links">
 								<div className="col">
-									<h6>Links</h6>
+									<h5>Links</h5>
 									<ul>
 										<li>Home</li>
 										<li>Movies</li>
@@ -96,13 +96,30 @@ class Container extends Component {
 									</ul>
 								</div>
 								<div className="col">
-									<h6>Contact</h6>
+									<h5>Contact</h5>
 									<ul>
 										<li>info@example.com</li>
 										<li>+800 123 4321</li>
 										<li>exampledomain.com</li>
 										<li>1234 Address LN. 90506</li>
 									</ul>
+								</div>
+							</div>
+							<div className="feed">
+								<h5>News Feed</h5>
+								<div className="post">
+									<img alt="post 1" src="https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+									<div className="text">
+										<h6>Lorem ipsum dolor sit amet, consectetur</h6>
+										<span><i className="fas fa-user"></i> By Admin</span>
+									</div>
+								</div>
+								<div className="post">
+									<img alt="post 2" src="https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+									<div className="text">
+										<h6>Lorem ipsum dolor sit amet, consectetur</h6>
+										<span><i className="fas fa-user"></i> By Admin</span>
+									</div>
 								</div>
 							</div>
 						</div>

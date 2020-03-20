@@ -123,7 +123,6 @@ export const getOmdbData = id => dispatch => {
 	const omdb_url = 'https://www.omdbapi.com';
 	axios.get(`${omdb_url}/?i=${id}&${omdb_key}`)
 		.then((response) => {
-			console.log(response.data);
 			dispatch({
 				type: OMDB_DATA,
 				payload: response.data

@@ -70,7 +70,7 @@ class CategoryRow extends Component {
 		let { i } = this.props;
 		setTimeout(() => {
 			if (document.querySelector(`.loop-scroll${i}`) !== null && document.querySelectorAll(`.is-clone${i}`) !== null) {
-				console.log(document.querySelector(`.loop-scroll${i}`));
+				// console.log(document.querySelector(`.loop-scroll${i}`));
 				this.setState({
 					context: document.querySelector(`.loop-scroll${i}`),
 					clones: document.querySelectorAll(`.is-clone${i}`)

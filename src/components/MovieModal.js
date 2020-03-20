@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 
 import EmbeddedVideo from './EmbeddedVideo';
 
-const styles = {
-	height: '300px',
-	width: '175px',
-	backgroundSize: 'cover',
-	backgroundPosition: 'center',
-	backgroundRepeat: 'no-repeat'
-}
-
 class MovieModal extends Component {
 	constructor() {
 		super();
@@ -19,37 +11,54 @@ class MovieModal extends Component {
 		this.toggleTrailer = this.toggleTrailer.bind(this);
 	}
 	UNSAFE_componentWillReceiveProps(nextProps) {
-		const { chosenMovie, getTrailers } = nextProps;
+		const { chosenMovie, getTrailers, omdbData } = nextProps;
 		if (chosenMovie !== this.props.chosenMovie && chosenMovie.id !== undefined) {
 			getTrailers(chosenMovie.id);
 			this.props.getOmdbData(chosenMovie.imdb_id);
+		}
+		if (omdbData.Title !== undefined) {
+			console.log(omdbData);
 		}
 	}
 	toggleTrailer(bool) {
 		this.setState({ trailerIsOpen: bool });
 	}
 	render() {
-		const { movieIsOpen, chosenMovie, handleMovieModal, trailers } = this.props;
+		const { movieIsOpen, chosenMovie, handleMovieModal, trailers, omdbData } = this.props;
+		const { Title, Year, Rated, Actors, Language, Ratings, Director, Writer, Metascore, imdbRating, Production, Runtime } = omdbData;
 		const { trailerIsOpen } = this.state;
 		const { title, runtime, tagline, overview, genres, poster_path } = chosenMovie;
 		const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 
 		if (movieIsOpen) {
-			document.querySelector('body').classList.add('disable');
+			if (document.querySelector('body').className !== 'disable') {
+				document.querySelector('body').classList.add('disable');
+			}
 		} else {
-			document.querySelector('body').classList.remove('disable');
+			if (document.querySelector('body').className === 'disable') {
+				document.querySelector('body').classList.remove('disable');
+			}
 		}
+
 		return (
 			<div className={`modal movie ${movieIsOpen ? 'open' : ''}`}>
-				<div className="inner">
-					<header onClick={() => {
+				<header>
+					<div onClick={() => {
 						handleMovieModal(false);
-					}}>
-						<button>X</button>
-					</header>
+					}} className="close-modal">
+						<i className="fas fa-times"></i>
+					</div>
+				</header>
+				{Title !== undefined ? 
+				<div className="inner">
 					<main>
 						<div className="movie-info">
-							<h1>{title} - <span>{runtime}min</span></h1>
+							<h1>{title} <span>({Year})</span></h1>
+							<div className="rating">
+								<span>{Rated}</span>
+								<span>{Runtime}</span>
+								<span>{Language}</span>
+							</div>
 							<p className="desc">{overview}</p>
 							<p className="tagline">- "{tagline}"</p>
 							<div className="genres">
@@ -59,14 +68,35 @@ class MovieModal extends Component {
 									)
 								}) : ''}
 							</div>
+							<div className="cast">
+								<h2>Director</h2>
+								<p>{Director}</p>
+								<h2>Writer(s)</h2>
+								<p>{Writer}</p>
+								<h2>Actors</h2>
+								{Actors.split(', ').map((a) => {
+									return (
+										<p key={a}>{a}</p>
+									)
+								})}
+							</div>
+							<div className="ratings">
+								{Ratings.map((r) => {
+									let { Source, Value } = r;
+									return (
+										<p key={Source}>{Source}: <span>{Value}</span></p>
+									)
+								})}
+							</div>
 							<button onClick={e => this.toggleTrailer(true)}>Watch Trailer</button>
 						</div>
-						<div className="movie-poster" style={{...styles, backgroundImage: poster_path !== undefined ? `url('${POSTER_URL}/${poster_path}')` : ''}}>
+						<div className="movie-poster" style={{backgroundImage: poster_path !== undefined ? `url('${POSTER_URL}/${poster_path}')` : ''}}>
 							
 						</div>
 					</main>
 					<EmbeddedVideo movieIsOpen={movieIsOpen} trailerIsOpen={trailerIsOpen} toggleTrailer={this.toggleTrailer} video={trailers[0]} />
 				</div>
+				: null}
 			</div>
 		)
 	}

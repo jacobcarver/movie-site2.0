@@ -2,32 +2,37 @@ import React from 'react';
 
 const CurrentMovie = (props) => {
 	let { upcomingMovies, movieIndex, chooseMovie, handleMovieModal, handleLeft, handleRight, throttle } = props;
+	let { id, backdrop_path, poster_path, overview, title, vote_average } = upcomingMovies[movieIndex];
 	const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
+	let stars = (Math.round(vote_average) * 2) - 10;
+	if (stars > 5) {
+		stars = 5;
+	}
 	return (
 		<main className="current-movie">
 			<div className="current-movie-info">
-				<img src={upcomingMovies[movieIndex].backdrop_path !== undefined && upcomingMovies[movieIndex].backdrop_path !== null ? `${POSTER_URL}/${upcomingMovies[movieIndex].backdrop_path}` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'} />
+				<img src={backdrop_path !== undefined && backdrop_path !== null ? `${POSTER_URL}/${backdrop_path}` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'} />
 				<div className="inner">
 					<div className="movie">
-						<h6>Production Company</h6>
-						<h1>{upcomingMovies[movieIndex].title}</h1>
+						<h6>Upcoming Movie</h6>
+						<h1>{title}</h1>
 						<div className="rating">
 							<div className="stars">
-								<i className="fas fa-star"></i>
-								<i className="fas fa-star"></i>
-								<i className="fas fa-star"></i>
-								<i className="far fa-star"></i>
-								<i className="far fa-star"></i>
+								{stars > 0 ? <i className="fas fa-star"></i> : <i className="fa fa-star"></i>}
+								{stars > 1 ? <i className="fas fa-star"></i> : <i className="fa fa-star"></i>}
+								{stars > 2 ? <i className="fas fa-star"></i> : <i className="fa fa-star"></i>}
+								{stars > 3 ? <i className="fas fa-star"></i> : <i className="fa fa-star"></i>}
+								{stars > 4 ? <i className="fas fa-star"></i> : <i className="fa fa-star"></i>}
 							</div>
-							<span>3 / 5</span>
+							<span>{stars} / 5</span>
 						</div>
-						<p className="desc">{upcomingMovies[movieIndex].overview}</p>
+						<p className="desc">{overview}</p>
 						<button onClick={() => {
-							chooseMovie(upcomingMovies[movieIndex].id);
+							chooseMovie(id);
 							handleMovieModal(true);
 						}}>View More</button>
 					</div>
-					<div className="poster" style={{backgroundImage: upcomingMovies[movieIndex].poster_path !== undefined && upcomingMovies[movieIndex].poster_path !== null ? `url('${POSTER_URL}/${upcomingMovies[movieIndex].poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}></div>
+					<div className="poster" style={{backgroundImage: poster_path !== undefined && poster_path !== null ? `url('${POSTER_URL}/${poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}></div>
 				</div>
 				<div className="toggler">
 					<div className="arrow left" onClick={e => throttle(handleLeft)}><i className="fas fa-arrow-left"></i></div>
@@ -41,7 +46,7 @@ const CurrentMovie = (props) => {
 						{upcomingMovies.map((movie) => {
 							let { id, title, poster_path } = movie;
 							return (
-								<div className={`col ${id === upcomingMovies[movieIndex].id ? 'active': ''}`} key={id}>
+								<div className={`col ${id === id ? 'active': ''}`} key={id}>
 									<div className="movie" onClick={() => {
 										chooseMovie(id);
 										handleMovieModal(true);

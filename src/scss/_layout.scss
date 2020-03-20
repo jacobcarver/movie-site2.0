@@ -39,7 +39,7 @@ body.disable {
 				position: absolute;
 				height: 4px;
 				width: 4px;
-				background: $pink;
+				background: $purple;
 				left: 50%;
 				bottom: -14px;
 				border-radius: 4px;
@@ -79,14 +79,15 @@ body.disable {
 }
 
 footer {
-	background: $purple;
+	background: black;
 	padding: 4rem 0;
 	.container {
 		.divider {
 			display: inline-block;
 			min-width: 100%;
 			height: 1px;
-			background: black;
+			background: rgba(255, 255, 255, 0.375);
+			opacity: 0.3;
 			margin-bottom: 3rem;
 		}
 		.row {
@@ -94,10 +95,11 @@ footer {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				margin-bottom: 1.5rem;
+				margin-bottom: 3rem;
 				.logo {
 					font-size: 2rem;
 					font-weight: 600;
+					color: $white;
 				}
 				.socials {
 					display: flex;
@@ -109,13 +111,13 @@ footer {
 						height: 40px;
 						width: 40px;
 						border-radius: 50%;
-						background: black;
+						border: 2px solid $white;
 						margin: 0 0.5rem;
 						&:last-of-type {
 							margin: 0;
 						}
 						i {
-							color: white;
+							color: $white;
 							font-size: 0.825rem;
 						}
 					}
@@ -139,6 +141,13 @@ footer {
 									width: 50%;
 									padding: 0.5rem;
 									font-weight: 300;
+									color: $white;
+									opacity: 0.6;
+									cursor: pointer;
+									transition: all 0.4s ease-in-out;
+									&:hover {
+										opacity: 1;
+									}
 									&:nth-of-type(odd) {
 										padding-left: 0;
 									}
@@ -153,14 +162,72 @@ footer {
 								li {
 									padding: 0.5rem 0;
 									font-weight: 300;
+									color: $white;
+									opacity: 0.6;
+									cursor: pointer;
+									transition: all 0.4s ease-in-out;
+									&:hover {
+										opacity: 1;
+									}
 								}
 							}
 						}
-						h6 {
+						h5 {
 							font-weight: 600;
+							font-size: 1.2rem;
 							margin-bottom: 0.75rem;
+							color: $white;
 						}
 						
+					}
+				}
+				.feed {
+					width: 50%;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+					h5 {
+						font-weight: 600;
+						font-size: 1.2rem;
+						margin-bottom: 1.25rem;
+						color: $white;
+					}
+					.post {
+						display: flex;
+						max-width: 300px;
+						cursor: pointer;
+						&:first-of-type {
+							margin-bottom: 1rem;
+						}
+						img {
+							max-width: 100px;
+							margin-right: 1rem;
+						}
+						&:hover {
+							.text {
+								h6,
+								span {
+									opacity: 1;
+								}
+							}
+						}
+						.text {
+							h6 {
+								margin-bottom: 0.5rem;
+								line-height: 1.2;
+								font-weight: 300;
+								color: $white;
+								opacity: 0.5;
+								transition: all 0.4s ease-in-out;
+							}
+							span {
+								font-size: 0.625rem;
+								font-weight: 600;
+								color: $white;
+								opacity: 0.6;
+								transition: all 0.4s ease-in-out;
+							}
+						}
 					}
 				}
 			}
@@ -168,7 +235,12 @@ footer {
 				display: flex;
 				justify-content: space-between;
 				p {
-					font-weight: 600;
+					font-weight: 400;
+					font-size: 0.625rem;
+					color: $white;
+					span:first-of-type {
+						margin-right: 1rem;
+					}
 				}
 			}
 		}
