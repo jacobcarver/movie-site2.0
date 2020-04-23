@@ -71,11 +71,10 @@ class Container extends Component {
 				<footer>
 					<div className="container">
 						<div className="row">
-							<div className="logo">LOGO</div>
+							<div className="logo"><i className="fas fa-film"></i> Movie <span>PRO</span></div>
 							<div className="socials">
 								<a href="/"><i className="fab fa-facebook-f"></i></a>
 								<a href="/"><i className="fab fa-twitter"></i></a>
-								<a href="/"><i className="fab fa-youtube"></i></a>
 								<a href="/"><i className="fab fa-instagram"></i></a>
 							</div>
 						</div>
@@ -110,14 +109,14 @@ class Container extends Component {
 								<div className="post">
 									<img alt="post 1" src="https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
 									<div className="text">
-										<h6>Lorem ipsum dolor sit amet, consectetur</h6>
+										<h6>Newest Film Production Cameras</h6>
 										<span><i className="fas fa-user"></i> By Admin</span>
 									</div>
 								</div>
 								<div className="post">
 									<img alt="post 2" src="https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
 									<div className="text">
-										<h6>Lorem ipsum dolor sit amet, consectetur</h6>
+										<h6>Top Anticipated Movies This Year</h6>
 										<span><i className="fas fa-user"></i> By Admin</span>
 									</div>
 								</div>

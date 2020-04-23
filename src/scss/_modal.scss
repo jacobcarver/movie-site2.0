@@ -36,6 +36,7 @@
 					h1 {
 						font-size: 2.5rem;
 						margin-bottom: 1.5rem;
+						line-height: 1.2;
 					}
 					.rating {
 						margin-bottom: 3rem;
@@ -51,32 +52,35 @@
 							}
 						}
 					}
+					h2 {
+						font-weight: 600;
+						font-size: 1.2rem;
+						margin-bottom: 0.5rem;
+					}
 					.desc {
 						line-height: 1.8;
 						margin-bottom: 0.5rem;
+						&.no-tag {
+							margin-bottom: 3rem;
+						}
 					}
 					.tagline {
 						font-weight: 600;
 						margin-bottom: 3rem;
 					}
 					.cast {
-						h2 {
-							font-weight: 600;
-							font-size: 1.2rem;
-							margin-bottom: 0.5rem;
-						}
 						p {
 							line-height: 1.8;
 							&.directors {
-								margin-bottom: 1.5rem;
+								margin-bottom: 3rem;
 							}
 							&.writers {
-								margin-bottom: 1.5rem;
+								margin-bottom: 3rem;
 							}
 							&.actors {
 								margin-bottom: 0.5rem;
 								&:last-of-type {
-									margin-bottom: 1.5rem;
+									margin-bottom: 3rem;
 								}
 							}
 						}
@@ -89,6 +93,7 @@
 						}
 						p {
 							margin-bottom: 1.225rem;
+							line-height: 1.5;
 							&:last-of-type {
 								margin: 0;
 							}
@@ -159,6 +164,9 @@
 	position: fixed;
 	right: 1.5rem;
 	bottom: 1.5rem;
+	left: 1.5rem;
+	display: flex;
+	max-height: calc((100vw - 3rem) / 1.2);
 	.close-trailer {
 		position: absolute;
 		height: 40px;
@@ -181,12 +189,45 @@
 			color: white;
 		}
 	}
-	div {
+	div.vid {
+		border: 1px solid red;
+		overflow: hidden;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		h1 {
 
 		}
 		iframe {
 
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.modal {
+		&.movie {
+			.inner {
+				main {
+					flex-direction: column;
+					.movie-info {
+						width: 100%;
+						margin-bottom: 3rem;
+					}
+					.movie-poster {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						flex-direction: column;
+						.poster {
+							min-width: 200px;
+							max-width: 200px;
+							height: calc(200px * 1.5);
+						}
+					}
+				}
+			}
 		}
 	}
 }

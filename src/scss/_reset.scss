@@ -44,3 +44,17 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.loading-discover {
+	height: 100px;
+	width: 100px;
+	height: 75vh;
+	max-height: 75vh;
+	width: 100%;
+	margin-bottom: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	img {
+		height: 75px;
+	}
+}

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
+import loading from '../assets/loading.svg';
+
 class Shows extends Component {
 	UNSAFE_componentWillMount() {
 		let { tvShows, getTvShows } = this.props;
-		if (tvShows.length <= 0) {
-			getTvShows();
-		}
+		setTimeout(() => {
+			if (tvShows.length === 0) {
+				getTvShows();
+			}
+		}, 1000)
 	}
 	render() {
 		const { tvShows, handleTvModal, chooseShow } = this.props;
@@ -13,6 +17,7 @@ class Shows extends Component {
 		return (
 			<div id="shows">
 				<div className="container">
+					{tvShows.length > 0 ? 
 					<div className="list">
 						{tvShows.map((show) => {
 							let { poster_path, id, original_name } = show;
@@ -28,7 +33,7 @@ class Shows extends Component {
 								</div>
 							)
 						})}
-					</div>
+					</div> : <div className="loading-discover"><img src={loading} alt="Loading Movies" /></div>}
 				</div>
 			</div>
 		)

@@ -16,12 +16,25 @@ class MovieModal extends Component {
 			getTrailers(chosenMovie.id);
 			this.props.getOmdbData(chosenMovie.imdb_id);
 		}
-		if (omdbData.Title !== undefined) {
-			console.log(omdbData);
-		}
 	}
 	toggleTrailer(bool) {
 		this.setState({ trailerIsOpen: bool });
+	}
+	componentWillReceiveProps(p) {
+		const {
+			movieIsOpen,
+		} = this.props;
+		if (movieIsOpen) {
+			if (document.querySelector('body').className !== 'disable') {
+				console.log(document.querySelector('body').className !== 'disable');
+			} else {
+				document.querySelector('body').classList.add('disable');
+			}
+		} else {
+			if (document.querySelector('body').className === 'disable') {
+				document.querySelector('body').classList.remove('disable');
+			}
+		}
 	}
 	render() {
 		const { movieIsOpen, chosenMovie, handleMovieModal, trailers, omdbData } = this.props;
@@ -39,7 +52,6 @@ class MovieModal extends Component {
 				document.querySelector('body').classList.remove('disable');
 			}
 		}
-
 		return (
 			<div className={`modal movie ${movieIsOpen ? 'open' : ''}`}>
 				<header>
@@ -59,8 +71,9 @@ class MovieModal extends Component {
 								<span>{Runtime}</span>
 								<span>{Language}</span>
 							</div>
-							<p className="desc">{overview}</p>
-							<p className="tagline">- "{tagline}"</p>
+							<h2>Description</h2>
+							<p className={`desc ${tagline.length === 0 ? 'no-tag' : ''}`}>{overview}</p>
+							{tagline.length > 0 ? <p className="tagline">- "{tagline}"</p> : null}
 							<div className="cast">
 								<h2>Director</h2>
 								<p className="directors">{Director}</p>

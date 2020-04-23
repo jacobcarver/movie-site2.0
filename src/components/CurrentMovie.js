@@ -4,7 +4,7 @@ const CurrentMovie = (props) => {
 	let { upcomingMovies, movieIndex, chooseMovie, handleMovieModal, handleLeft, handleRight, throttle } = props;
 	let { id, backdrop_path, poster_path, overview, title, vote_average } = upcomingMovies[movieIndex];
 	const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
-	let stars = (Math.round(vote_average) * 2) - 10;
+	let stars = Math.round((vote_average * 5) / 10);
 	if (stars > 5) {
 		stars = 5;
 	}

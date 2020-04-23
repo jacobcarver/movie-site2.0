@@ -1,5 +1,4 @@
 #home {
-	position: relative;
 	margin-top: -146px;
 	display: flex;
 	padding-top: 100vh;
@@ -7,16 +6,17 @@
 	main {
 		position: absolute;
 		top: 0;
-		width: 100vw;
+		width: 100%;
 		color: white;
 		height: 100vh;
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
-		padding: 0 calc(40vw / 4);
+		padding: 0 3rem;
+		max-width: calc(100vw);
+		align-items: left;
 		overflow: hidden;
 		z-index: -1;
-		// background-image: url('https://image.tmdb.org/t/p/w500//xFxk4vnirOtUxpOEWgA1MCRfy6J.jpg');
 		background-image: url('https://wallpaperaccess.com/full/37943.jpg');
 		background-size: cover;
 		background-position: center;
@@ -29,36 +29,161 @@
 			z-index: -1;
 			background: rgba(0, 0, 0, 0.5);
 		}
+		h1, h2 {
+			width: 100%;
+			max-width: calc(40vw * 2.25);
+			margin: 0 auto;
+		}
 		h1 {
 			font-weight: 600;
 			font-size: 3rem;
-			margin-bottom: 2rem;
+			margin-bottom: 1.5rem;
 			text-transform: capitalize;
 			line-height: 1.2;
 		}
 		h2 {
 			color: rgb(161, 161, 161);
 			font-size: 1.2rem;
-			max-width: 600px;
 			line-height: 1.6;
 		}
 	}
 	.container {
 		position: relative;
 		// top: 100%;
-		// width: calc(40vw * 2.25);
+		min-width: 100% !important;
 		// left: 50%;
 		// transform: translateX(-50%);
-		// padding: 6rem 0;
 		section {
+			padding: 6rem 0;
+			&.info {
+				background: white;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				.row {
+					display: flex;
+					align-items: center;
+					max-width: calc(40vw * 2.25);
+					&.reverse {
+						flex-direction: row-reverse;
+						.image {
+							background-image: url('https://hips.hearstapps.com/digitalspyuk.cdnds.net/18/16/1524058250-rick-and-morty-portal.jpg');
+							background-position: center;
+							background-size: cover;
+							border: none;
+							border-left: 4px solid $black;
+						}
+						.text {
+							margin-right: 3rem;
+							margin-left: 0;
+						}
+					}
+					&:first-of-type {
+						margin-bottom: 3rem;
+					}
+					.text {
+						margin-left: 3rem;
+						width: 65%;
+					}
+					h2 {
+						font-weight: 600;
+						margin-bottom: 2vw;
+						font-size: 1.5rem;
+						color: $darkBlue;
+					}
+					p {
+						line-height: 1.8;
+					}
+					.image {
+						min-width: 45%;
+						display: flex;
+						background-image: url('https://image.tmdb.org/t/p/w500//3tkDMNfM2YuIAJlvGO6rfIzAnfG.jpg');
+						background-size: cover;
+						background-position: center;
+						min-height: calc(40vw / 2);
+						-webkit-box-shadow: 0px 0px 50px -35px rgba(116, 116, 116, 0.75);
+						-moz-box-shadow: 0px 0px 50px -35px rgba(116, 116, 116, 0.75);
+						box-shadow: 0px 0px 50px -35px rgba(116, 116, 116, 0.75);
+						border-right: 4px solid $black;
+						position: relative;
+						.overlay {
+							position: absolute;
+							height: 100%;
+							width: 100%;
+							background: $purple;
+							opacity: 0.5;
+						}
+					}
+				}
+			}
+			&.poster {
+				position: relative;
+				background-image: url('https://i.ytimg.com/vi/axWt4HVT7iY/maxresdefault.jpg');
+				background-size: cover;
+				background-position: center;
+				min-height: 400px;
+				.overlay {
+					position: absolute;
+					z-index: 0;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: $purple;
+					opacity: 0.5;
+				}
+				.text {
+					color: white;
+					position: absolute;
+					z-index: 1000;
+					width: calc(40vw * 2.25);
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					h1, p, a {
+						text-align: center;
+					}
+					h1 {
+						text-align: center;
+						font-weight: 600;
+						font-size: 2.5rem;
+						margin-bottom: 0.75rem;
+						line-height: 1.2;
+					}
+					p {
+						max-width: 250px;
+						margin: 0 auto 3rem;
+						line-height: 1.6;
+					}
+					a {
+						margin: 0 auto;
+						display: flex;
+						width: 200px;
+						margin: 0 auto;
+						color: white;
+						background: $black;
+						text-decoration: none;
+						justify-content: center;
+						padding: 1.25rem 0.75rem;
+						border-radius: 6px;
+						font-weight: 600;
+						text-transform: uppercase;
+						font-size: 0.825rem;
+						cursor: pointer;
+					}
+				}
+			}
 			&.pricing {
-				padding: 4rem 0;
 				h3 {
 					color: white;
-					font-size: 1.5rem;
+					font-weight: 600;
+					font-size: 2.5rem;
 					text-shadow: 0 0 2px white;
-					margin-bottom: 1.5rem;
+					margin: 0 auto 3rem;
 					text-align: center;
+					max-width: calc(40vw * 2.25);
+					line-height: 1.2;
 				}
 				.prices {
 					display: flex;
@@ -69,6 +194,9 @@
 						padding: 1.5rem;
 						max-width: 375px;
 						min-width: 375px;
+						&:last-of-type {
+							padding-bottom: 0;
+						}
 						.price {
 							background: black;
 							border-radius: 1rem;
@@ -121,6 +249,46 @@
 	}
 }
 
+@media screen and (max-width: 768px) {
+	#home {
+		main {
+			padding: 0 1.5rem;
+			width: calc(100vw - 3rem);
+		}
+		.container {
+			section {
+				&.info {
+					padding: 3rem 1.5rem;
+					.row {
+						padding: 0;
+						flex-direction: column;
+						align-items: flex-start;
+						.text {
+							width: 100%;
+							margin: 0;
+							p {
+								font-size: 0.925rem;
+							}
+						}
+						.image {
+							width: 100%;
+							padding: 0;
+							margin-bottom: 1.5rem;
+							min-height: 40vw;
+						}
+						&.reverse {
+							flex-direction: column;
+							.image {
+								padding: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 @media screen and (max-width: 480px) {
 	#home {
 		main {
@@ -130,6 +298,17 @@
 			}
 			h2 {
 				max-width: 350px;
+			}
+		}
+		.container {
+			section {
+				&.info {
+					.row {
+						.image {
+							min-height: 200px;
+						}
+					}
+				}
 			}
 		}
 	}

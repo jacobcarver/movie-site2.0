@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
 	render() {
@@ -10,6 +11,30 @@ class Home extends Component {
 					<div className="overlay"></div>
 				</main>
 				<div className="container">
+					<section className="info">
+						<div className="row">
+							<div className="image"><div className="overlay"></div></div>
+							<div className="text">
+								<h2>New Movies</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vivendum intellegat et qui, ei denique consequuntur vix. Ridens nostro perfecto ad cum, debet omnes splendide sit eu, vix an iisque dissentias. Pri posse graeco definitiones cu.</p>
+							</div>
+						</div>
+						<div className="row reverse">
+							<div className="image"><div className="overlay"></div></div>
+							<div className="text">
+								<h2>TV Shows</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vivendum intellegat et qui, ei denique consequuntur vix. Ridens nostro perfecto ad cum, debet omnes splendide sit eu, vix an iisque dissentias. Pri posse graeco definitiones cu.</p>
+							</div>
+						</div>
+					</section>
+					<section className="poster">
+						<div className="overlay"></div>
+						<div className="text">
+							<h1>Movies. TV Shows. Trailers</h1>
+							<p>Get started discovering multiple categories of movies</p>
+							<Link to="/discover">Discover Movies</Link>
+						</div>
+					</section>
 					<section className="pricing">
 						<h3>Choose your pricing plan</h3>
 						<div className="prices">

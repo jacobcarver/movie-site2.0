@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import MovieCategories from '../components/MovieCategories';
 import CurrentMovie from '../components/CurrentMovie';
 
+import loading from '../assets/loading.svg';
+
 class Discover extends Component {
 	constructor() {
 		super();
@@ -18,18 +20,20 @@ class Discover extends Component {
 	}
 	UNSAFE_componentWillMount() {
 		let { getUpcomingMovies, getPopularMovies, getRMovies, getKidsMovies, upcomingMovies, popularMovies, rMovies, kidsMovies } = this.props
-		if (upcomingMovies.length <= 0) {
-			getUpcomingMovies();
-		}
-		if (popularMovies.length <= 0) {
-			getPopularMovies();
-		}
-		if (rMovies.length <= 0) {
-			getRMovies();
-		}
-		if (kidsMovies.length <= 0) {
-			getKidsMovies();
-		}
+		setTimeout(() => {
+			if (upcomingMovies.length <= 0) {
+				getUpcomingMovies();
+			}
+			if (popularMovies.length <= 0) {
+				getPopularMovies();
+			}
+			if (rMovies.length <= 0) {
+				getRMovies();
+			}
+			if (kidsMovies.length <= 0) {
+				getKidsMovies();
+			}
+		}, 1000);
 	}
 	updateMovieIndex() {
 		let nextIndex = this.state.movieIndex + 1;
@@ -90,7 +94,7 @@ class Discover extends Component {
 					{upcomingMovies[movieIndex] !== undefined ? <CurrentMovie throttle={this.throttle} handleRight={this.handleRight} handleLeft={this.handleLeft} handleMovieModal={handleMovieModal} chooseMovie={chooseMovie} upcomingMovies={upcomingMovies} movieIndex={movieIndex} /> : null}
 					{upcomingMovies.length > 0 && popularMovies.length > 0 && rMovies.length > 0 && kidsMovies.length > 0 ? 
 					<MovieCategories handleMovieModal={handleMovieModal} movieIsOpen={movieIsOpen} chosenMovie={chosenMovie} chooseMovie={chooseMovie} upcomingMovies={upcomingMovies} popularMovies={popularMovies} rMovies={rMovies} kidsMovies={kidsMovies} />
-					: null}
+					: <div className="loading-discover"><img src={loading} alt="Loading Movies" /></div>}
 				</div>
 			</div>
 		)
