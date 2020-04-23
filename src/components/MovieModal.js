@@ -25,16 +25,17 @@ class MovieModal extends Component {
 	}
 	render() {
 		const { movieIsOpen, chosenMovie, handleMovieModal, trailers, omdbData } = this.props;
-		const { Title, Year, Rated, Actors, Language, Ratings, Director, Writer, Metascore, imdbRating, Production, Runtime } = omdbData;
+		const { Title, Rated, Actors, Language, Ratings, Director, Writer, Metascore, imdbRating, Production, Runtime } = omdbData;
 		const { trailerIsOpen } = this.state;
 		const { title, runtime, tagline, overview, genres, poster_path } = chosenMovie;
 		const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 		return (
 			<div className={`modal movie ${movieIsOpen ? 'open' : ''}`}>
 				<header>
-					<div onClick={() => {
-						handleMovieModal(false);
-					}} className="close-modal">
+					<div onClick = {() => {
+							handleMovieModal(false);
+						}
+					} className="close-modal">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
 							aria-describedby="desc" role="img">
 							<title>Close Modal</title>
@@ -47,7 +48,7 @@ class MovieModal extends Component {
 				<div className="inner">
 					<main>
 						<div className="movie-info">
-							<h1>{title} <span>({Year})</span></h1>
+							<h1>{title}</h1>
 							<div className="rating">
 								<span>{Rated}</span>
 								<span>{Runtime}</span>
@@ -84,7 +85,7 @@ class MovieModal extends Component {
 								<div className="trailer-button" onClick={e => this.toggleTrailer(true)}><i className="fas fa-ticket-alt"></i></div>
 							</div>
 							<div className="genres">
-								{genres !== undefined ? genres.map((g) => {
+								{genres.length > 0 ? genres.map((g) => {
 									return (
 										<span key={g.id}>{g.name}</span>
 									)

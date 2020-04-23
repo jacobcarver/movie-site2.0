@@ -70,7 +70,6 @@ class CategoryRow extends Component {
 		let { i } = this.props;
 		setTimeout(() => {
 			if (document.querySelector(`.loop-scroll${i}`) !== null && document.querySelectorAll(`.is-clone${i}`) !== null) {
-				// console.log(document.querySelector(`.loop-scroll${i}`));
 				this.setState({
 					context: document.querySelector(`.loop-scroll${i}`),
 					clones: document.querySelectorAll(`.is-clone${i}`)
@@ -99,9 +98,6 @@ class CategoryRow extends Component {
 				<div className={`movies loop-scroll${i}`}>
 					{propArray[i].map((movie) => {
 						let { id, poster_path, imdb_id } = movie;
-						if (poster_path === '/mWOkjqqzWiaFC65i2nFuMzM9jne.jpg') {
-							console.log(movie);
-						}
 						if (imdb_id !== null) {
 							return (
 								<div className="col" key={id} onClick={e => this.selectMovie(id)}>

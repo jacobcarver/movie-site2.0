@@ -46,8 +46,10 @@ class Home extends Component {
 										<li>HD available</li>
 										<li>Ultra HD available</li>
 										<li>Watch on any device</li>
-										<li>Unlimited Movies / TV Shows</li>
+										<li>Movie trailers</li>
 										<li>Cancel anytime</li>
+										<li>With ads</li>
+										<li>One profile</li>
 									</ul>
 									<button>Choose Plan</button>
 								</div>
@@ -60,8 +62,10 @@ class Home extends Component {
 										<li>HD available</li>
 										<li>Ultra HD available</li>
 										<li>Watch on any device</li>
-										<li>Unlimited Movies / TV Shows</li>
+										<li>Tv & movie trailers</li>
 										<li>Cancel anytime</li>
+										<li>No ads</li>
+										<li>Up to 3 profiles</li>
 									</ul>
 									<button>Choose Plan</button>
 								</div>
@@ -74,8 +78,10 @@ class Home extends Component {
 										<li>HD available</li>
 										<li>Ultra HD available</li>
 										<li>Watch on any device</li>
-										<li>Unlimited Movies / TV Shows</li>
+										<li>Tv & movie trailers</li>
 										<li>Cancel anytime</li>
+										<li>No ads</li>
+										<li>Up to 5 profiles</li>
 									</ul>
 									<button>Choose Plan</button>
 								</div>
