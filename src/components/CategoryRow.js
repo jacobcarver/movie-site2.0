@@ -98,20 +98,25 @@ class CategoryRow extends Component {
 				<h2>{cat}</h2>
 				<div className={`movies loop-scroll${i}`}>
 					{propArray[i].map((movie) => {
-						let { id, poster_path } = movie;
-						return (
-							<div className="col" key={id} onClick={e => this.selectMovie(id)}>
-								<div className="movie" style={{backgroundImage: poster_path !== undefined && poster_path !== null ? `url('${POSTER_URL}/${poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
+						let { id, poster_path, imdb_id } = movie;
+						if (poster_path === '/mWOkjqqzWiaFC65i2nFuMzM9jne.jpg') {
+							console.log(movie);
+						}
+						if (imdb_id !== null) {
+							return (
+								<div className="col" key={id} onClick={e => this.selectMovie(id)}>
+									<div className="movie" style={{backgroundImage: poster_path !== undefined && poster_path !== null ? `url('${POSTER_URL}${poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
+									</div>
 								</div>
-							</div>
-						)
+							)
+						}
 					})}
 					{propArray[i][0] !== undefined ? <div className={`col is-clone${i}`} key={propArray[i][0].id}>
-						<div className="movie" style={{backgroundImage: propArray[i][0].poster_path !== undefined && propArray[i][0].poster_path !== null ? `url('${POSTER_URL}/${propArray[i][0].poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
+						<div className="movie" style={{backgroundImage: propArray[i][0].poster_path !== undefined && propArray[i][0].poster_path !== null ? `url('${POSTER_URL}${propArray[i][0].poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
 						</div>
 					</div> : null}
 					{propArray[i][0] !== undefined ? <div className={`col is-clone${i}`} key={propArray[i][1].id}>
-						<div className="movie" style={{backgroundImage: propArray[i][1].poster_path !== undefined && propArray[i][1].poster_path !== null ? `url('${POSTER_URL}/${propArray[i][1].poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
+						<div className="movie" style={{backgroundImage: propArray[i][1].poster_path !== undefined && propArray[i][1].poster_path !== null ? `url('${POSTER_URL}${propArray[i][1].poster_path}')` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'}}>
 						</div>
 					</div> : null}
 				</div>

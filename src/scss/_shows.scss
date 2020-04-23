@@ -62,3 +62,23 @@
 		}
 	}
 }
+
+@media screen and (max-width: 768px) {
+	.container {
+		.list {
+			.col {
+				width: 50%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.container {
+		.list {
+			.col {
+				width: 300px;
+			}
+		}
+	}
+}

@@ -11,30 +11,17 @@ class MovieModal extends Component {
 		this.toggleTrailer = this.toggleTrailer.bind(this);
 	}
 	UNSAFE_componentWillReceiveProps(nextProps) {
-		const { chosenMovie, getTrailers, omdbData } = nextProps;
-		if (chosenMovie !== this.props.chosenMovie && chosenMovie.id !== undefined) {
+		const { chosenMovie, getTrailers, movieIsOpen } = nextProps;
+		if (chosenMovie !== this.props.chosenMovie && chosenMovie.id !== undefined && chosenMovie.imdb_id !== null) {
 			getTrailers(chosenMovie.id);
 			this.props.getOmdbData(chosenMovie.imdb_id);
+		}
+		if (movieIsOpen === true && chosenMovie.imdb_id === null) {
+			this.props.handleMovieModal(false);
 		}
 	}
 	toggleTrailer(bool) {
 		this.setState({ trailerIsOpen: bool });
-	}
-	componentWillReceiveProps(p) {
-		const {
-			movieIsOpen,
-		} = this.props;
-		if (movieIsOpen) {
-			if (document.querySelector('body').className !== 'disable') {
-				console.log(document.querySelector('body').className !== 'disable');
-			} else {
-				document.querySelector('body').classList.add('disable');
-			}
-		} else {
-			if (document.querySelector('body').className === 'disable') {
-				document.querySelector('body').classList.remove('disable');
-			}
-		}
 	}
 	render() {
 		const { movieIsOpen, chosenMovie, handleMovieModal, trailers, omdbData } = this.props;
@@ -42,23 +29,18 @@ class MovieModal extends Component {
 		const { trailerIsOpen } = this.state;
 		const { title, runtime, tagline, overview, genres, poster_path } = chosenMovie;
 		const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
-
-		if (movieIsOpen) {
-			if (document.querySelector('body').className !== 'disable') {
-				document.querySelector('body').classList.add('disable');
-			}
-		} else {
-			if (document.querySelector('body').className === 'disable') {
-				document.querySelector('body').classList.remove('disable');
-			}
-		}
 		return (
 			<div className={`modal movie ${movieIsOpen ? 'open' : ''}`}>
 				<header>
 					<div onClick={() => {
 						handleMovieModal(false);
 					}} className="close-modal">
-						<i className="fas fa-times"></i>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+							aria-describedby="desc" role="img">
+							<title>Close Modal</title>
+							<path fill="none" stroke="#202020" strokeMiterlimit="10" strokeWidth="4" d="M41.999 20.002l-22 22m22 0L20 20"
+							strokeLinejoin="round" strokeLinecap="round"></path>
+						</svg>
 					</div>
 				</header>
 				{Title !== undefined ? 

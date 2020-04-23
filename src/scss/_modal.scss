@@ -19,10 +19,11 @@
 			display: flex;
 			justify-content: flex-end;
 			.close-modal {
-				padding: 1.5rem;
+				padding: 1rem;
 				cursor: pointer;
-				i {
-					font-size: 2rem;
+				svg {
+					height: 40px;
+					width: 40px;
 				}
 			}
 		}
@@ -37,6 +38,12 @@
 						font-size: 2.5rem;
 						margin-bottom: 1.5rem;
 						line-height: 1.2;
+						color: $purple;
+						font-weight: 600;
+						span {
+							color: $black;
+							font-weight: 400;
+						}
 					}
 					.rating {
 						margin-bottom: 3rem;
@@ -47,9 +54,9 @@
 							color: white;
 							margin-right: 1.5rem;
 							font-size: 0.825rem;
-							&:last-of-type {
-								margin: 0;
-							}
+							// &:last-of-type {
+							// 	margin: 0;
+							// }
 						}
 					}
 					h2 {
@@ -65,8 +72,10 @@
 						}
 					}
 					.tagline {
-						font-weight: 600;
+						font-weight: 300;
+						color: #929292;
 						margin-bottom: 3rem;
+						font-style: italic;
 					}
 					.cast {
 						p {
@@ -163,10 +172,21 @@
 .embedded-video {
 	position: fixed;
 	right: 1.5rem;
-	bottom: 1.5rem;
+	bottom: -25%;
+	min-width: 300px;
+	min-height: 225px;
+	width: calc(100% - 3rem);
 	left: 1.5rem;
 	display: flex;
-	max-height: calc((100vw - 3rem) / 1.2);
+	height: calc(40vw / 1.75);
+	transition: all 0.6s ease-in-out;
+	background-color: black;
+	opacity: 0;
+	max-width: 500px;
+	&.open {
+		bottom: 1.5rem;
+		opacity: 1;
+	}
 	.close-trailer {
 		position: absolute;
 		height: 40px;
@@ -179,6 +199,7 @@
 		border-radius: 50%;
 		left: -20px;
 		top: -20px;
+		z-index: 5;
 		transition: all 0.3s ease-in-out;
 		&:hover {
 			-webkit-box-shadow: 0px 0px 5px 1px rgba(85, 85, 85, 0.4);
@@ -188,19 +209,23 @@
 		i {
 			color: white;
 		}
+		svg {
+			height: 30px;
+			width: 30px;
+		}
 	}
 	div.vid {
-		border: 1px solid red;
 		overflow: hidden;
 		width: 100%;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-end;
+		max-width: 500px;
 		h1 {
 
 		}
-		iframe {
-
+		#message-id {
+			max-width: 500px;
 		}
 	}
 }
@@ -214,6 +239,14 @@
 					.movie-info {
 						width: 100%;
 						margin-bottom: 3rem;
+						padding-right: 0;
+						.rating {
+							display: flex;
+							flex-wrap: wrap;
+							span {
+								margin: 0.5rem;
+							}
+						}
 					}
 					.movie-poster {
 						display: flex;

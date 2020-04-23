@@ -43,6 +43,15 @@ class Container extends Component {
 	handleTvModal(bool) {
 		this.setState({ tvIsOpen: bool });
 	}
+	UNSAFE_componentWillReceiveProps(p) {
+		if (this.state.movieIsOpen) {
+			if (document.querySelector('body').className !== 'disable') {
+				setTimeout(() => {
+					document.querySelector('body').classList.add('disable');
+				}, 500);
+			}
+		}
+	}
 	render() {
 		const {
 			searchMovies,
@@ -71,7 +80,7 @@ class Container extends Component {
 				<footer>
 					<div className="container">
 						<div className="row">
-							<div className="logo"><i className="fas fa-film"></i> Movie <span>PRO</span></div>
+							<div className="logo"><i className="fas fa-film"></i> Movie<span>PRO</span></div>
 							<div className="socials">
 								<a href="/"><i className="fab fa-facebook-f"></i></a>
 								<a href="/"><i className="fab fa-twitter"></i></a>
@@ -122,6 +131,7 @@ class Container extends Component {
 								</div>
 							</div>
 						</div>
+						<div className="divider"></div>
 						<div className="row">
 							<p>Copyright &copy; - 2020</p>
 							<p><span>Privacy</span> <span>Terms & Conditions</span></p>
