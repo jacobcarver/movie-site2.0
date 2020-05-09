@@ -105,6 +105,8 @@ class CategoryRow extends Component {
 									</div>
 								</div>
 							)
+						} else {
+							return null;
 						}
 					})}
 					{propArray[i][0] !== undefined ? <div className={`col is-clone${i}`} key={propArray[i][0].id}>

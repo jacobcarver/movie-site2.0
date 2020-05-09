@@ -11,7 +11,7 @@ const CurrentMovie = (props) => {
 	return (
 		<main className="current-movie">
 			<div className="current-movie-info">
-				<img src={backdrop_path !== undefined && backdrop_path !== null ? `${POSTER_URL}/${backdrop_path}` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'} />
+				<img alt={title} src={backdrop_path !== undefined && backdrop_path !== null ? `${POSTER_URL}/${backdrop_path}` : 'https://eapp.org/wp-content/uploads/2018/05/poster_placeholder.jpg'} />
 				<div className="inner">
 					<div className="movie">
 						<h6>Upcoming Movie</h6>
